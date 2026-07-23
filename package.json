@@ -1,0 +1,36 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "artifacts/*",
+    "lib/*",
+    "scripts"
+  ],
+  "scripts": {
+    "dev": "tsx artifacts/api-server/src/index.ts",
+    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild artifacts/api-server/src/index.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
+    "lint": "npm run -w @workspace/solvex typecheck",
+    "test": "npm run -w @workspace/api-server test",
+    "test:all": "npm run -w @workspace/api-server test:all",
+    "test:middleware": "npm run -w @workspace/api-server test:middleware",
+    "test:pillars": "npm run -w @workspace/api-server test:pillars",
+    "test:crawlers": "npm run -w @workspace/api-server test:crawlers"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.8",
+    "prettier": "^3.8.4",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.2",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "@google/genai": "^2.12.0",
+    "groq-sdk": "^1.3.0",
+    "stripe": "^22.3.0",
+    "stripe-replit-sync": "^1.0.0"
+  }
+}
