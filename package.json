@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
-    "start": "node server.ts",
+    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server.js",
+    "start": "node dist/server.js",
     "lint": "npm run -w @workspace/solvex typecheck",
     "test": "npm run -w @workspace/api-server test",
     "test:all": "npm run -w @workspace/api-server test:all",

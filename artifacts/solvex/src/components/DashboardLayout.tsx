@@ -165,31 +165,34 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Top Ticker Bar */}
       <div style={{
-        background: "#0B0E1A", borderBottom: "1px solid #1A2035",
-        height: 32, display: "flex", alignItems: "center", overflow: "hidden", flexShrink: 0,
+        background: "linear-gradient(90deg, #0B0E1A 0%, #0D1224 50%, #0B0E1A 100%)",
+        borderBottom: "1px solid #1A2035",
+        height: 38, display: "flex", alignItems: "center", overflow: "hidden", flexShrink: 0,
+        boxShadow: "0 2px 10px rgba(0,0,0,0.5)",
       }}>
         <div style={{
-          fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, fontWeight: 700,
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, fontWeight: 800,
           letterSpacing: "0.2em", color: "#D4AF37", background: "#0B0E1A",
-          borderRight: "1px solid #D4AF37", padding: "0 14px", whiteSpace: "nowrap",
+          borderRight: "1px solid #D4AF37", padding: "0 18px", whiteSpace: "nowrap",
           height: "100%", display: "flex", alignItems: "center", flexShrink: 0,
-        }}>LIVE</div>
+          boxShadow: "2px 0 8px rgba(212,175,55,0.2)",
+        }}>LIVE DATA</div>
         <div style={{ flex: 1, overflow: "hidden" }}>
           <div style={{
-            fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#5B6480",
+            fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#6B7490",
             whiteSpace: "nowrap",
             animation: "ticker-scroll 50s linear infinite",
           }}>
             {[...TICKER, ...TICKER].map((item, i) => (
-              <span key={i} style={{ marginRight: 48, color: item.includes("▼") ? "#F87171" : "#34D399" }}>
+              <span key={i} style={{ marginRight: 48, color: item.includes("▼") ? "#F87171" : "#34D399", fontWeight: 600 }}>
                 {item}
               </span>
             ))}
           </div>
         </div>
         <div style={{
-          fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, color: "#3D4560",
-          padding: "0 14px", borderLeft: "1px solid #1A2035", flexShrink: 0,
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#4A5470",
+          padding: "0 16px", borderLeft: "1px solid #1A2035", flexShrink: 0, fontWeight: 600,
         }}>
           {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} EST
         </div>
@@ -198,23 +201,36 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* Sidebar */}
         <aside style={{
-          width: 220, background: "#07091A", borderRight: "1px solid #1A2035",
+          width: 280, background: "#07091A", borderRight: "1px solid #1A2035",
           display: "flex", flexDirection: "column", flexShrink: 0,
         }}>
-          {/* Logo */}
-          <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid #1A2035" }}>
+          {/* Logo / Header Banner */}
+          <div style={{ padding: "18px 18px 14px", borderBottom: "1px solid #1A2035", background: "linear-gradient(180deg, #0B0E22 0%, #07091A 100%)" }}>
             <Link href="/">
               <div style={{ cursor: "pointer" }}>
-                <img
-                  src="/solvex-logo.png"
-                  alt="SOLVEX PARADOX BOX"
-                  style={{
-                    width: "100%", height: 80,
-                    objectFit: "contain", objectPosition: "left center",
-                    display: "block",
-                  }}
-                />
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 7, letterSpacing: "0.2em", color: "#3D4560", marginTop: 4 }}>
+                <div style={{
+                  border: "2px solid #D4AF37",
+                  borderRadius: "10px",
+                  overflow: "hidden",
+                  padding: "4px",
+                  boxShadow: "0 0 25px rgba(212,175,55,0.3), inset 0 0 15px rgba(96,165,250,0.2)",
+                  background: "#000000",
+                }}>
+                  <img
+                    src="/solvex-header.jpg"
+                    alt="SOLVEX PARADOX BOX"
+                    style={{
+                      width: "100%", height: 140,
+                      objectFit: "contain", objectPosition: "center",
+                      display: "block",
+                      borderRadius: "6px",
+                    }}
+                  />
+                </div>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, letterSpacing: "0.24em", color: "#D4AF37", marginTop: 10, textAlign: "center", fontWeight: 900, textShadow: "0 0 10px rgba(212,175,55,0.3)" }}>
+                  SOLVEX PARADOX BOX
+                </div>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 8.5, letterSpacing: "0.16em", color: "#7A85A0", marginTop: 4, textAlign: "center", fontWeight: 600 }}>
                   OSFI B-13 · SOC 2 · NIST · PIPEDA
                 </div>
               </div>
@@ -320,8 +336,31 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
         </aside>
 
         {/* Main content */}
-        <main style={{ flex: 1, overflowY: "auto", background: "#05080F" }}>
-          {children}
+        <main style={{ flex: 1, overflowY: "auto", background: "#05080F", display: "flex", flexDirection: "column" }}>
+          <div style={{ flex: 1 }}>
+            {children}
+          </div>
+          <footer style={{
+            padding: "24px 32px",
+            borderTop: "1px solid #1A2035",
+            background: "#07091A",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 16,
+            marginTop: "auto"
+          }}>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#D4AF37", fontWeight: 700, letterSpacing: "0.15em" }}>
+              SOLVEX PARADOX BOX ENTERPRISE
+            </div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#8A94B0", letterSpacing: "0.08em" }}>
+              Contact: <a href="mailto:gods.battle.axe.88@gmail.com" style={{ color: "#D4AF37", textDecoration: "underline", fontWeight: 600 }}>gods.battle.axe.88@gmail.com</a>
+            </div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#5B6480", letterSpacing: "0.1em" }}>
+              OSFI B-13 · FINTRAC · PIPEDA · SOC 2 TYPE II
+            </div>
+          </footer>
         </main>
       </div>
 

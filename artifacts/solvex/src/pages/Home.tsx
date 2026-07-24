@@ -122,35 +122,94 @@ export default function Home() {
   return (
     <div style={{ minHeight: "100vh", background: "#05080F", color: "#E8EAF0" }}>
 
-      {/* Top Nav */}
+      {/* Top Nav Header */}
       <header style={{
-        background: "#07091A", borderBottom: "2px solid #D4AF37",
-        padding: "0 48px", height: 72,
+        background: "linear-gradient(180deg, #0C102A 0%, #07091A 100%)",
+        borderBottom: "3px solid #D4AF37",
+        boxShadow: "0 8px 40px rgba(0,0,0,0.85), 0 0 30px rgba(212,175,55,0.3)",
+        padding: "24px 52px", minHeight: 170,
         display: "flex", alignItems: "center", justifyContent: "space-between",
+        position: "relative", zIndex: 50,
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img
-            src="/solvex-logo.png"
-            alt="SOLVEX PARADOX BOX"
-            style={{ height: 52, width: "auto", objectFit: "contain" }}
-          />
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+          <Link href="/">
+            <div style={{
+              border: "2px solid #D4AF37",
+              borderRadius: "10px",
+              padding: "6px",
+              overflow: "hidden",
+              boxShadow: "0 0 30px rgba(212,175,55,0.35), inset 0 0 20px rgba(96,165,250,0.25)",
+              background: "#000000",
+              cursor: "pointer",
+              transition: "transform 0.2s, box-shadow 0.2s",
+            }}>
+              <img
+                src="/solvex-header.jpg"
+                alt="SOLVEX PARADOX BOX"
+                style={{ height: 130, width: "auto", objectFit: "contain", display: "block", borderRadius: "6px" }}
+              />
+            </div>
+          </Link>
           <div>
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 8, letterSpacing: "0.22em", color: "#3D4560" }}>THE SHOWROOM FLOOR</div>
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 7, letterSpacing: "0.16em", color: "#2A3050" }}>OSFI B-13 · FINTRAC · PIPEDA · SOC 2</div>
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: 24,
+              letterSpacing: "0.28em",
+              color: "#D4AF37",
+              fontWeight: 900,
+              textShadow: "0 0 16px rgba(212,175,55,0.45)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}>
+              <span>SOLVEX PARADOX BOX</span>
+              <span style={{
+                fontSize: 10,
+                padding: "4px 12px",
+                background: "rgba(212,175,55,0.2)",
+                border: "1px solid #D4AF37",
+                borderRadius: "6px",
+                color: "#FFF0B3",
+                letterSpacing: "0.18em",
+                fontWeight: 800,
+                boxShadow: "0 0 10px rgba(212,175,55,0.2)",
+              }}>ENTERPRISE V3.8</span>
+            </div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, letterSpacing: "0.2em", color: "#A0ABC0", marginTop: 8, fontWeight: 600 }}>
+              OSFI B-13 · FINTRAC · PIPEDA · SOC 2 TYPE II · NIST SP 800-53
+            </div>
           </div>
         </div>
-        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
           <Link href="/marketplace">
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: "0.15em", color: "#9BA3B5", cursor: "pointer" }}>
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: 12,
+              letterSpacing: "0.2em",
+              color: "#CCD4E8",
+              cursor: "pointer",
+              padding: "12px 20px",
+              borderRadius: "8px",
+              border: "1px solid rgba(212,175,55,0.25)",
+              background: "rgba(212,175,55,0.05)",
+              fontWeight: 700,
+            }}>
               SHOWROOM FLOOR
             </div>
           </Link>
           <Link href="/marketplace">
             <div style={{
-              padding: "10px 24px",
-              background: "linear-gradient(135deg, #D4AF37, #B8860B)",
-              color: "#05080F", fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", cursor: "pointer",
+              padding: "14px 28px",
+              background: "linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)",
+              color: "#05080F",
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: 12,
+              fontWeight: 800,
+              letterSpacing: "0.18em",
+              cursor: "pointer",
+              borderRadius: "6px",
+              boxShadow: "0 0 20px rgba(212,175,55,0.35)",
+              border: "1px solid #FFE082",
             }}>
               WALK THE FLOOR →
             </div>
@@ -350,6 +409,45 @@ export default function Home() {
             </div>
           </Link>
         </div>
+
+        {/* Footer */}
+        <footer style={{
+          marginTop: 80,
+          paddingTop: 32,
+          paddingBottom: 48,
+          borderTop: "1px solid #1A2035",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 12,
+          textAlign: "center"
+        }}>
+          <div style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 12,
+            letterSpacing: "0.15em",
+            color: "#D4AF37",
+            fontWeight: 700
+          }}>
+            SOLVEX PARADOX BOX ENTERPRISE PLATFORM
+          </div>
+          <div style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 13,
+            color: "#8A94B0",
+            letterSpacing: "0.1em"
+          }}>
+            Contact: <a href="mailto:gods.battle.axe.88@gmail.com" style={{ color: "#D4AF37", textDecoration: "underline", fontWeight: 600 }}>gods.battle.axe.88@gmail.com</a>
+          </div>
+          <div style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 10,
+            color: "#5B6480",
+            letterSpacing: "0.1em"
+          }}>
+            OSFI B-13 · FINTRAC · PIPEDA · SOC 2 TYPE II COMPLIANT · ALL RIGHTS RESERVED
+          </div>
+        </footer>
 
       </div>
     </div>

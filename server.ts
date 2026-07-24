@@ -1,4 +1,4 @@
-import { app, startServer } from "./artifacts/api-server/src/index.js";
+import { app, startServer } from "./artifacts/api-server/src/index.ts";
 
 // Unified Workspace Common Entry Point
 export { app, startServer };
