@@ -120,9 +120,7 @@ async function startServer() {
     app.use(async (req, res, next) => {
       if (req.method === 'GET' && req.headers.accept?.includes('text/html')) {
         try {
-          const indexHtmlPath = fs.existsSync(path.resolve(process.cwd(), "index.html"))
-            ? path.resolve(process.cwd(), "index.html")
-            : path.resolve(process.cwd(), "artifacts/solvex/index.html");
+          const indexHtmlPath = path.resolve(process.cwd(), "artifacts/solvex/index.html");
           let template = fs.readFileSync(indexHtmlPath, 'utf-8');
           template = await vite.transformIndexHtml(req.originalUrl, template);
           
