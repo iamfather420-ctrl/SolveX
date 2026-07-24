@@ -32,7 +32,7 @@ router.get("/vault/available-funds", async (req, res) => {
     const now = new Date();
     const entries = await db.select().from(vaultEntriesTable)
       .where(and(eq(vaultEntriesTable.status, "held"), lte(vaultEntriesTable.holdUntil, now)));
-    const total = entries.reduce((sum, e) => sum + parseFloat(e.amount), 0);
+    const total = entries.reduce((sum: number, e: any) => sum + parseFloat(e.amount), 0);
     res.json({ total: total.toFixed(8), count: entries.length, entries });
   } catch (err) {
     req.log.error({ err }, "available funds error");

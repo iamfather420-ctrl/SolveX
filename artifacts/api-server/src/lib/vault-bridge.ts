@@ -285,7 +285,7 @@ export async function bridgeAll(): Promise<{ bridged: number; skipped: number }>
   const { daisyBrainTable } = await import("@workspace/db");
   const brainEntries = await db.select().from(daisyBrainTable);
   const existing = await db.select({ brainId: vaultBridgeTable.brainId }).from(vaultBridgeTable);
-  const bridgedIds = new Set(existing.map(r => r.brainId));
+  const bridgedIds = new Set(existing.map((r: any) => r.brainId));
 
   let bridged = 0;
   let skipped = 0;
@@ -317,7 +317,7 @@ export async function getEvidenceBundle(paradoxId: number) {
     .from(vaultBridgeTable)
     .where(eq(vaultBridgeTable.paradoxId, paradoxId));
 
-  return rows.map(r => ({
+  return rows.map((r: any) => ({
     manifestId: r.manifestId,
     manifestHash: r.manifestHash,
     resolutionType: r.resolutionType,

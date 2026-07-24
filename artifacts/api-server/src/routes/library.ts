@@ -10,7 +10,7 @@ router.get("/library", async (req, res) => {
     const userId = req.user?.id;
     if (!userId) { res.json([]); return; }
     const purchases = await db.select().from(userPurchasesTable).where(eq(userPurchasesTable.userId, userId));
-    const result = await Promise.all(purchases.map(async (p) => {
+    const result = await Promise.all(purchases.map(async (p: any) => {
       const [product] = await db.select().from(paradoxProductsTable).where(eq(paradoxProductsTable.id, p.productId)).limit(1);
       return { ...p, product: product ?? null };
     }));

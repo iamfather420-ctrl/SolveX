@@ -21,8 +21,8 @@ router.get("/challenges", async (req, res) => {
     let query = db.select().from(challengeHubTable).orderBy(desc(challengeHubTable.feasibilityScore));
     const rows = await query;
     let filtered = rows;
-    if (platform) filtered = filtered.filter(r => r.platformId === platform);
-    if (status) filtered = filtered.filter(r => r.submissionStatus === status);
+    if (platform) filtered = filtered.filter((r: any) => r.platformId === platform);
+    if (status) filtered = filtered.filter((r: any) => r.submissionStatus === status);
     res.json(filtered.slice(0, parseInt(limit)));
   } catch (err: any) {
     req.log.error({ err }, "challenges list error");

@@ -259,7 +259,7 @@ async function composeDraft(p: typeof outreachProspects.$inferSelect) {
     .from(paradoxProductsTable)
     .where(sql`${paradoxProductsTable.id} LIKE ${prefix + "%"}`)
     .limit(30);
-  const prod = prods.length > 0 ? pick(prods) : null;
+  const prod: any = prods.length > 0 ? pick(prods) : null;
   const productName = prod?.name ?? "Master Apex Bundle";
   const productId = prod?.id ?? "SOLVEX-MASTER-29";
 

@@ -9,9 +9,9 @@
     "scripts"
   ],
   "scripts": {
-    "dev": "tsx artifacts/api-server/src/index.ts",
-    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild artifacts/api-server/src/index.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
-    "start": "node dist/server.cjs",
+    "dev": "tsx server.ts",
+    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node server.ts",
     "lint": "npm run -w @workspace/solvex typecheck",
     "test": "npm run -w @workspace/api-server test",
     "test:all": "npm run -w @workspace/api-server test:all",
@@ -20,7 +20,7 @@
     "test:crawlers": "npm run -w @workspace/api-server test:crawlers"
   },
   "devDependencies": {
-    "esbuild": "0.25.8",
+    "esbuild": "^0.25.0",
     "prettier": "^3.8.4",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",

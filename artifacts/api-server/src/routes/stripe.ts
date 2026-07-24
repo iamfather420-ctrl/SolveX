@@ -60,7 +60,7 @@ router.get("/stripe/orders", async (req: any, res) => {
       .select()
       .from(ordersTable)
       .where(eq(ordersTable.userId, userId));
-    res.json(orders.filter((o) => o.paymentMethod === "stripe"));
+    res.json(orders.filter((o: any) => o.paymentMethod === "stripe"));
   } catch (err: any) {
     req.log.error({ err }, "Stripe orders error");
     res.status(500).json({ error: err.message });

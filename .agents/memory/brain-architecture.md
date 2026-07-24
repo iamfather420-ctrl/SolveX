@@ -38,4 +38,4 @@ description: U.A.R.E.F.A.K.E. 59-paradox engine, dAIsy haMINJA persona, IRS-Firs
 ## B2B Products (13 brain-specific products: SOLVEX-BRAIN-01 through 13)
 Defined in brainData.ts alongside the 29 marketplace products.
 
-**Why:** The architecture is extracted from two APK sources (Kotlin B2B app + Capacitor web app). Both APK uploads were identical bundles (index-CHrZndZA.js, 209320 bytes) — no new content in the second upload.
+**Architecture:** Native Express + React TypeScript full-stack web application running directly on Node.js.

@@ -114,7 +114,7 @@ router.post("/openai/conversations/:id/messages", async (req, res) => {
   const history = await db.select().from(messages).where(eq(messages.conversationId, id)).orderBy(asc(messages.createdAt));
   const chatMessages = [
     { role: "system" as const, content: DAISY_SYSTEM_PROMPT },
-    ...history.map(m => ({ role: m.role as "user" | "assistant", content: m.content })),
+    ...history.map((m: any) => ({ role: m.role as "user" | "assistant", content: m.content })),
   ];
 
   res.setHeader("Content-Type", "text/event-stream");

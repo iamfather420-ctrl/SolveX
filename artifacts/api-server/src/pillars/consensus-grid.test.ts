@@ -75,7 +75,7 @@ describe("Consensus Grid Gate", () => {
       timestamp: Date.now() - 120_000, // 2 minutes ago (limit is 60s)
       quorumMet: true,
       respondents: 45,
-    });
+    } as any);
 
     await l5ConsensusGate(mockReq, mockRes, mockNext);
 
@@ -95,7 +95,7 @@ describe("Consensus Grid Gate", () => {
       timestamp: Date.now() - 10_000, // fresh
       quorumMet: false,
       respondents: 15,
-    });
+    } as any);
 
     await l5ConsensusGate(mockReq, mockRes, mockNext);
 
@@ -115,7 +115,7 @@ describe("Consensus Grid Gate", () => {
       timestamp: Date.now() - 10_000, // fresh
       quorumMet: true,
       respondents: 54,
-    });
+    } as any);
 
     await l5ConsensusGate(mockReq, mockRes, mockNext);
 

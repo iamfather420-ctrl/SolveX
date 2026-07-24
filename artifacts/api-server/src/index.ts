@@ -120,7 +120,9 @@ async function startServer() {
     app.use(async (req, res, next) => {
       if (req.method === 'GET' && req.headers.accept?.includes('text/html')) {
         try {
-          const indexHtmlPath = path.resolve(process.cwd(), "artifacts/solvex/index.html");
+          const indexHtmlPath = fs.existsSync(path.resolve(process.cwd(), "index.html"))
+            ? path.resolve(process.cwd(), "index.html")
+            : path.resolve(process.cwd(), "artifacts/solvex/index.html");
           let template = fs.readFileSync(indexHtmlPath, 'utf-8');
           template = await vite.transformIndexHtml(req.originalUrl, template);
           
@@ -163,12 +165,7 @@ async function startServer() {
     });
   }
 
-  app.listen(port, (err) => {
-    if (err) {
-      logger.error({ err }, "Error listening on port");
-      process.exit(1);
-    }
-
+  const server = app.listen(port, () => {
     logger.info({ port }, "Server listening");
 
     // Pillar 5: Vault sidecar first — forks child process, then erases secrets from main env
@@ -193,6 +190,11 @@ async function startServer() {
     initStripe();
 
     logger.info("SOLVEX-CORE-FINALIZED: ACTIVE | Sovereign Operating Mode | 54-Node Grid + Keyless Vault + Kinetic Resolver + Autonomous Crawler + Payments");
+  });
+
+  server.on("error", (err) => {
+    logger.error({ err }, "Error listening on port");
+    process.exit(1);
   });
 }
 

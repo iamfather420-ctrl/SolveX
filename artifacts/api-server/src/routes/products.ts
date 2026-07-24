@@ -13,11 +13,11 @@ router.get("/products", async (req, res) => {
     if (category) conditions.push(eq(paradoxProductsTable.category, category));
     if (search) conditions.push(ilike(paradoxProductsTable.name, `%${search}%`));
     let results = await db.select().from(paradoxProductsTable);
-    if (category) results = results.filter((p) => p.category === category);
-    if (search) results = results.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()));
-    if (sortBy === "price_asc") results.sort((a, b) => parseFloat(a.priceUsdc) - parseFloat(b.priceUsdc));
-    else if (sortBy === "price_desc") results.sort((a, b) => parseFloat(b.priceUsdc) - parseFloat(a.priceUsdc));
-    else if (sortBy === "name") results.sort((a, b) => a.name.localeCompare(b.name));
+    if (category) results = results.filter((p: any) => p.category === category);
+    if (search) results = results.filter((p: any) => p.name.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()));
+    if (sortBy === "price_asc") results.sort((a: any, b: any) => parseFloat(a.priceUsdc) - parseFloat(b.priceUsdc));
+    else if (sortBy === "price_desc") results.sort((a: any, b: any) => parseFloat(b.priceUsdc) - parseFloat(a.priceUsdc));
+    else if (sortBy === "name") results.sort((a: any, b: any) => a.name.localeCompare(b.name));
     res.json(results);
   } catch (err) {
     req.log.error({ err }, "Failed to list products");
@@ -28,9 +28,9 @@ router.get("/products", async (req, res) => {
 router.get("/products/stats", async (req, res) => {
   try {
     const products = await db.select().from(paradoxProductsTable);
-    const totalSales = products.reduce((sum, p) => sum + p.salesCount, 0);
-    const totalRevenue = products.reduce((sum, p) => sum + p.salesCount * parseFloat(p.priceUsdc), 0);
-    const byCategory = products.reduce((acc: Record<string, number>, p) => {
+    const totalSales = products.reduce((sum: number, p: any) => sum + p.salesCount, 0);
+    const totalRevenue = products.reduce((sum: number, p: any) => sum + p.salesCount * parseFloat(p.priceUsdc), 0);
+    const byCategory = products.reduce((acc: Record<string, number>, p: any) => {
       acc[p.category] = (acc[p.category] || 0) + 1;
       return acc;
     }, {});

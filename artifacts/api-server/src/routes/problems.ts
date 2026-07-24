@@ -9,9 +9,9 @@ router.get("/problems", async (req, res) => {
   try {
     const { category, status, search, limit = "20", offset = "0" } = req.query as Record<string, string>;
     let problems = await db.select().from(problemsTable).orderBy(desc(problemsTable.createdAt));
-    if (category) problems = problems.filter((p) => p.category === category);
-    if (status) problems = problems.filter((p) => p.status === status);
-    if (search) problems = problems.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()));
+    if (category) problems = problems.filter((p: any) => p.category === category);
+    if (status) problems = problems.filter((p: any) => p.status === status);
+    if (search) problems = problems.filter((p: any) => p.title.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()));
     res.json(problems.slice(parseInt(offset), parseInt(offset) + parseInt(limit)));
   } catch (err) {
     req.log.error({ err }, "list problems error");
@@ -23,11 +23,11 @@ router.get("/problems/stats", async (req, res) => {
   try {
     const problems = await db.select().from(problemsTable);
     const total = problems.length;
-    const open = problems.filter((p) => p.status === "open").length;
-    const solved = problems.filter((p) => p.status === "solved").length;
-    const inProgress = problems.filter((p) => p.status === "in_review" || p.status === "solution_submitted" || p.status === "verifying").length;
-    const totalValue = problems.reduce((sum, p) => sum + parseFloat(p.paymentOffer), 0);
-    const byCategory = problems.reduce((acc: Record<string, number>, p) => { acc[p.category] = (acc[p.category] || 0) + 1; return acc; }, {});
+    const open = problems.filter((p: any) => p.status === "open").length;
+    const solved = problems.filter((p: any) => p.status === "solved").length;
+    const inProgress = problems.filter((p: any) => p.status === "in_review" || p.status === "solution_submitted" || p.status === "verifying").length;
+    const totalValue = problems.reduce((sum: number, p: any) => sum + parseFloat(p.paymentOffer), 0);
+    const byCategory = problems.reduce((acc: Record<string, number>, p: any) => { acc[p.category] = (acc[p.category] || 0) + 1; return acc; }, {});
     res.json({ total, open, solved, inProgress, totalValue: totalValue.toFixed(2), byCategory });
   } catch (err) {
     req.log.error({ err }, "problem stats error");

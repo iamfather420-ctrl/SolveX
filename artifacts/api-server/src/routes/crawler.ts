@@ -20,7 +20,7 @@ router.get("/crawler/crawled", async (req, res) => {
   try {
     const { platform, limit = "20", offset = "0" } = req.query as Record<string, string>;
     let crawled = await db.select().from(crawledProblemsTable).orderBy(desc(crawledProblemsTable.crawledAt));
-    if (platform) crawled = crawled.filter((c) => c.platform === platform);
+    if (platform) crawled = crawled.filter((c: any) => c.platform === platform);
     res.json(crawled.slice(parseInt(offset), parseInt(offset) + parseInt(limit)));
   } catch (err) {
     req.log.error({ err }, "crawled problems error");

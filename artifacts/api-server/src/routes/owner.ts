@@ -30,7 +30,7 @@ router.get("/owner/audit-log", async (req, res) => {
   try {
     const { limit = "100", offset = "0", eventType } = req.query as Record<string, string>;
     let entries = await db.select().from(auditLogTable).orderBy(desc(auditLogTable.createdAt));
-    if (eventType) entries = entries.filter((e) => e.eventType === eventType);
+    if (eventType) entries = entries.filter((e: any) => e.eventType === eventType);
     res.json(entries.slice(parseInt(offset), parseInt(offset) + parseInt(limit)));
   } catch (err) {
     req.log.error({ err }, "audit log error");
@@ -45,11 +45,11 @@ router.get("/owner/system-stats", async (req, res) => {
     const problems = await db.select().from(problemsTable);
     const earnings = await db.select().from(earningsTable);
     const totalOrders = orders.length;
-    const totalRevenue = orders.reduce((s, o) => s + parseFloat(o.amount), 0).toFixed(8);
-    const vaultBalance = vaultEntries.filter((e) => e.status === "held" || e.status === "available").reduce((s, e) => s + parseFloat(e.amount), 0).toFixed(8);
+    const totalRevenue = orders.reduce((s: number, o: any) => s + parseFloat(o.amount), 0).toFixed(8);
+    const vaultBalance = vaultEntries.filter((e: any) => e.status === "held" || e.status === "available").reduce((s: number, e: any) => s + parseFloat(e.amount), 0).toFixed(8);
     const totalProblems = problems.length;
-    const solvedProblems = problems.filter((p) => p.status === "solved").length;
-    const totalEarnings = earnings.reduce((s, e) => s + parseFloat(e.amount), 0).toFixed(2);
+    const solvedProblems = problems.filter((p: any) => p.status === "solved").length;
+    const totalEarnings = earnings.reduce((s: number, e: any) => s + parseFloat(e.amount), 0).toFixed(2);
     res.json({ totalOrders, totalRevenue, vaultBalance, activeSubscriptions: 0, totalProblems, solvedProblems, totalEarnings });
   } catch (err) {
     req.log.error({ err }, "system stats error");
@@ -60,7 +60,7 @@ router.get("/owner/system-stats", async (req, res) => {
 router.get("/owner/payment-notifications", async (req, res) => {
   try {
     const notifications = await db.select().from(paymentNotificationsTable).orderBy(desc(paymentNotificationsTable.createdAt));
-    res.json(notifications.map((n) => ({ ...n, isRead: n.isRead === "1" })));
+    res.json(notifications.map((n: any) => ({ ...n, isRead: n.isRead === "1" })));
   } catch (err) {
     req.log.error({ err }, "payment notifications error");
     res.status(500).json({ error: "Internal server error" });

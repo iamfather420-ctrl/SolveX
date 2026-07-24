@@ -51,6 +51,7 @@ export default defineConfig({
     strictPort: true,
     host: "0.0.0.0",
     allowedHosts: true,
+    hmr: process.env.DISABLE_HMR === "true" ? false : undefined,
     fs: {
       strict: true,
     },

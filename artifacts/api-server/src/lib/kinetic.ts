@@ -81,7 +81,7 @@ function tetherSnapshot() {
 async function calculateEntropy(): Promise<number> {
   const all = await db.select().from(problemsTable);
   if (all.length === 0) return 0;
-  const open = all.filter(p => p.status === "open");
+  const open = all.filter((p: any) => p.status === "open");
   return open.length / all.length;
 }
 
@@ -263,7 +263,7 @@ async function processSynapticEntropy(nodeId: number): Promise<void> {
   }
 
   const oldest = open.sort(
-    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+    (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
   )[0];
 
   logger.warn(
@@ -303,7 +303,7 @@ async function processSynapticEntropy(nodeId: number): Promise<void> {
 export async function collapseAll(): Promise<{ processed: number; skipped: number }> {
   const tether = tetherSnapshot();
   const all = await db.select().from(problemsTable);
-  const open = all.filter(p => p.status === "open");
+  const open = all.filter((p: any) => p.status === "open");
   const total = all.length || 1;
   let processed = 0;
   let skipped = 0;
@@ -355,7 +355,7 @@ export const runKineticCore = (): void => {
 
   // Seed collapseCount from DB so restarts don't reset the counter
   db.select().from(solutionsTable)
-    .then(rows => { state.collapseCount = rows.filter(r => r.solverId === "0").length; })
+    .then((rows: any[]) => { state.collapseCount = rows.filter((r: any) => r.solverId === "0").length; })
     .catch(() => { /* non-fatal */ });
 
   // Node 0 is the coordinator — it runs synaptic entropy on behalf of the grid

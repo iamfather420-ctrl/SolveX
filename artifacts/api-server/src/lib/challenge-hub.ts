@@ -291,7 +291,7 @@ export async function runFeasibilityGate(
         )
       )
       .limit(5);
-    dbParadoxMatches = brainRows.map(r => r.brainId);
+    dbParadoxMatches = brainRows.map((r: any) => r.brainId);
   } catch {
     // graceful fallback
   }
