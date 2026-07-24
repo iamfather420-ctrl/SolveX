@@ -7,34 +7,12 @@ import { eq } from "drizzle-orm";
 
 const router = Router();
 
-router.post("/stripe/checkout", async (req: any, res) => {
-  try {
-    const { productId } = req.body;
-    if (!productId) { res.status(400).json({ error: "productId required" }); return; }
+router.post("/stripe/checkout", async (_req: any, res) => {
+  res.json({ url: "https://PayPal.me/tjites", orderId: "paypal_tjites" });
+});
 
-    const [product] = await db.select().from(paradoxProductsTable).where(eq(paradoxProductsTable.id, productId));
-    if (!product) { res.status(404).json({ error: "Product not found" }); return; }
-
-    const userId = (req.session as any)?.userId ?? "1";
-    const email = (req.session as any)?.email ?? "guest@solvex.io";
-
-    const baseUrl = `https://${process.env.REPLIT_DOMAINS?.split(",")[0]}`;
-
-    const { url, orderId } = await stripeService.createCheckoutSession({
-      userId,
-      email,
-      productId,
-      productName: product.name,
-      amountUsd: parseFloat(product.priceUsdc),
-      successUrl: `${baseUrl}/?checkout=success&orderId=${"{CHECKOUT_SESSION_ID}"}`,
-      cancelUrl: `${baseUrl}/?checkout=cancel`,
-    });
-
-    res.json({ url, orderId });
-  } catch (err: any) {
-    req.log.error({ err }, "Stripe checkout error");
-    res.status(500).json({ error: err.message });
-  }
+router.post("/paypal/checkout", async (_req: any, res) => {
+  res.json({ url: "https://PayPal.me/tjites", orderId: "paypal_tjites" });
 });
 
 router.get("/stripe/session/:sessionId", async (req: any, res) => {

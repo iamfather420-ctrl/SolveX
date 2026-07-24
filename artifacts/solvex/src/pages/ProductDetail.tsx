@@ -15,14 +15,14 @@ const MONO: React.CSSProperties = { fontFamily: "'IBM Plex Mono', monospace" };
 const SERIF: React.CSSProperties = { fontFamily: "'Playfair Display', serif" };
 
 const CURRENCIES = [
-  { key: "card", label: "CARD",  icon: "💳" },
-  { key: "eth",  label: "ETH",   icon: "Ξ"  },
-  { key: "base", label: "BASE",  icon: "🔵" },
-  { key: "usdc", label: "USDC",  icon: "$"  },
-  { key: "sol",  label: "SOL",   icon: "◎"  },
+  { key: "paypal", label: "PAYPAL", icon: "🅿️" },
+  { key: "eth",    label: "ETH",    icon: "Ξ"  },
+  { key: "base",   label: "BASE",   icon: "🔵" },
+  { key: "usdc",   label: "USDC",   icon: "$"  },
+  { key: "sol",    label: "SOL",    icon: "◎"  },
 ] as const;
 
-type Currency = "card" | "eth" | "base" | "usdc" | "sol";
+type Currency = "paypal" | "eth" | "base" | "usdc" | "sol";
 
 const QR_IMAGES: Partial<Record<Currency, string>> = {
   eth:  "/qr-eth.png",
@@ -44,7 +44,7 @@ export default function ProductDetail() {
   const params = useParams();
   const id = params.id as string;
   const { data: product, isLoading } = useGetProduct(id);
-  const [currency, setCurrency] = useState<Currency>("card");
+  const [currency, setCurrency] = useState<Currency>("paypal");
   const [ordering, setOrdering] = useState(false);
   const [cryptoInfo, setCryptoInfo] = useState<CryptoPaymentInfo | null>(null);
   const [txHash, setTxHash] = useState("");
@@ -61,15 +61,10 @@ export default function ProductDetail() {
     setOrdering(true);
     setError(null);
     try {
-      if (currency === "card") {
-        const resp = await fetch("/api/stripe/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ productId: product.id }),
-        });
-        const data = await resp.json();
-        if (data.url) { window.location.href = data.url; return; }
-        setError(data.error ?? "Stripe checkout failed");
+      if (currency === "paypal") {
+        window.open("https://PayPal.me/tjites", "_blank");
+        window.location.href = "https://PayPal.me/tjites";
+        return;
       } else {
         const resp = await fetch("/api/crypto/payment-intent", {
           method: "POST",
@@ -116,11 +111,11 @@ export default function ProductDetail() {
   const col = meta.color;
 
   const priceMap: Record<string, string | undefined> = {
-    card: product.priceUsdc ? "$" + product.priceUsdc + " USD" : undefined,
-    eth:  product.priceEth  ? product.priceEth  + " ETH"  : undefined,
-    base: product.priceEth  ? product.priceEth  + " ETH"  : undefined,
-    usdc: product.priceUsdc ? product.priceUsdc + " USDC" : undefined,
-    sol:  product.priceUsdc ? product.priceUsdc + " USDC" : undefined,
+    paypal: product.priceUsdc ? "$" + product.priceUsdc + " USD" : undefined,
+    eth:    product.priceEth  ? product.priceEth  + " ETH"  : undefined,
+    base:   product.priceEth  ? product.priceEth  + " ETH"  : undefined,
+    usdc:   product.priceUsdc ? product.priceUsdc + " USDC" : undefined,
+    sol:    product.priceUsdc ? product.priceUsdc + " USDC" : undefined,
   };
 
   return (
@@ -256,7 +251,7 @@ export default function ProductDetail() {
                     {priceMap[currency] ?? "—"}
                   </div>
                   <div style={{ ...MONO, fontSize: 9, color: "#5B6480" }}>
-                    {currency === "card" && "Secure card payment via Stripe"}
+                    {currency === "paypal" && "Direct payment via PayPal.me/tjites"}
                     {currency === "eth"  && product.priceUsdc && "≈ $" + product.priceUsdc + " USD · Ethereum mainnet"}
                     {currency === "base" && product.priceUsdc && "≈ $" + product.priceUsdc + " USD · Base L2 network"}
                     {currency === "usdc" && "USD-pegged stablecoin · Base/Ethereum"}
@@ -349,14 +344,14 @@ export default function ProductDetail() {
                 {!cryptoInfo && !txSubmitted && (
                   <button onClick={handleOrder} disabled={ordering} style={{
                     width: "100%", padding: "12px",
-                    background: ordering ? "#3D4560" : currency === "card"
-                      ? "linear-gradient(135deg, #6366F1, #4F46E5)"
+                    background: ordering ? "#3D4560" : currency === "paypal"
+                      ? "linear-gradient(135deg, #0070BA, #003087)"
                       : "linear-gradient(135deg, #D4AF37, #B8860B)",
                     border: "none", color: "#FFFFFF",
                     ...MONO, fontSize: 10, fontWeight: 900, letterSpacing: "0.18em",
                     cursor: ordering ? "not-allowed" : "pointer",
                   }}>
-                    {ordering ? "PROCESSING..." : currency === "card" ? "PAY WITH CARD →" : "INITIATE ACQUISITION →"}
+                    {ordering ? "PROCESSING..." : currency === "paypal" ? "PAY WITH PAYPAL (PayPal.me/tjites) →" : "INITIATE ACQUISITION →"}
                   </button>
                 )}
               </div>
