@@ -37,7 +37,9 @@ async function initStripe(): Promise<void> {
   }
 }
 
-async function startServer() {
+export { app };
+
+export async function startServer() {
   const renderAiContext = (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.method === 'GET' && req.query.share && typeof req.query.share === 'string') {
       try {
@@ -196,7 +198,3 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  logger.error({ err }, "Failed to start server");
-  process.exit(1);
-});
