@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS payments (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  order_id TEXT,
+  provider TEXT NOT NULL,
+  provider_environment TEXT NOT NULL,
+  provider_order_id TEXT,
+  provider_capture_id TEXT,
+  amount_cents BIGINT NOT NULL,
+  currency TEXT NOT NULL DEFAULT 'USD',
+  status TEXT NOT NULL,
+  idempotency_key TEXT NOT NULL UNIQUE,
+  receipt_hash TEXT,
+  raw_response_json TEXT,
+  created_at BIGINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS deployments (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  order_id TEXT REFERENCES orders(id),
+  solution_id TEXT REFERENCES solutions(id),
+  environment TEXT NOT NULL,
+  status TEXT NOT NULL,
+  implementation_hash TEXT,
+  deployed_at BIGINT,
+  created_at BIGINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS checkpoints (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  checkpoint_id TEXT NOT NULL,
+  target_mutation TEXT NOT NULL,
+  classification TEXT NOT NULL,
+  snapshot_state_json TEXT NOT NULL,
+  created_at BIGINT NOT NULL
+);

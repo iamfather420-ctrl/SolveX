@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS rollback_records (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  checkpoint_id TEXT NOT NULL REFERENCES checkpoints(id),
+  reason TEXT NOT NULL,
+  status TEXT NOT NULL,
+  restored_hash TEXT,
+  created_at BIGINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS telemetry (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT REFERENCES tenants(id),
+  node_id TEXT,
+  metric TEXT NOT NULL,
+  value DOUBLE PRECISION NOT NULL,
+  unit TEXT,
+  recorded_at BIGINT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS audit_records (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  index_num BIGINT NOT NULL,
+  actor TEXT NOT NULL,
+  action TEXT NOT NULL,
+  target_entity TEXT NOT NULL,
+  target_id TEXT NOT NULL,
+  payload_json TEXT NOT NULL,
+  payload_hash TEXT NOT NULL,
+  previous_hash TEXT NOT NULL,
+  record_hash TEXT NOT NULL UNIQUE,
+  created_at BIGINT NOT NULL,
+  UNIQUE (tenant_id, index_num)
+);
