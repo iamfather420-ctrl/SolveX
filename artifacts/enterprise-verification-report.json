@@ -18,7 +18,7 @@
       "name": "MMTAI Single-Use Token Replay Prevention",
       "category": "SECURITY",
       "passed": true,
-      "duration_ms": 0,
+      "duration_ms": 1,
       "details": {
         "status": "PASSED"
       }
@@ -28,7 +28,7 @@
       "name": "Multi-Tenant Cryptographic Partition Isolation",
       "category": "SECURITY",
       "passed": true,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "details": {
         "status": "PASSED"
       }
@@ -78,7 +78,7 @@
       "name": "Paradox Registry Integrity (Exact 32 Bootstrap Set)",
       "category": "PARADOX",
       "passed": true,
-      "duration_ms": 1,
+      "duration_ms": 0,
       "details": {
         "status": "PASSED"
       }
@@ -98,7 +98,7 @@
       "name": "NOPOT Bounded Termination Formal Proof Verification",
       "category": "PROOFS",
       "passed": true,
-      "duration_ms": 0,
+      "duration_ms": 1,
       "details": {
         "status": "PASSED"
       }
@@ -178,7 +178,7 @@
       "name": "PayPal DN-35 Server-Authoritative Fail-Closed Enforcement",
       "category": "PAYMENTS",
       "passed": true,
-      "duration_ms": 1,
+      "duration_ms": 0,
       "details": {
         "status": "PASSED"
       }
@@ -218,7 +218,7 @@
       "name": "System Status API Endpoint Computes Real State",
       "category": "API",
       "passed": true,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "details": {
         "status": "PASSED"
       }
@@ -228,7 +228,7 @@
       "name": "SqliteStore Multi-Tenant Persistence & 27 Tables Integrity",
       "category": "DATABASE",
       "passed": true,
-      "duration_ms": 1,
+      "duration_ms": 0,
       "details": {
         "status": "PASSED"
       }
