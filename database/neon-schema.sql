@@ -186,8 +186,8 @@ CREATE TABLE IF NOT EXISTS orders (
   proof_bundle_id TEXT NOT NULL REFERENCES proof_bundles(id),
   price_cents BIGINT NOT NULL,
   status TEXT NOT NULL,
-  payment_id TEXT REFERENCES payments(id),
-  deployment_id TEXT REFERENCES deployments(id),
+  payment_id TEXT,
+  deployment_id TEXT,
   created_at BIGINT NOT NULL,
   updated_at BIGINT NOT NULL
 );
