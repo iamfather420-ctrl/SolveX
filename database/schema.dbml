@@ -1,0 +1,32 @@
+Project solvex_paradox_box {
+  database_type: 'SQLite'
+  Note: 'Tenant-isolated Solvex / dAIsy haMINJA verification and B2B marketplace schema'
+}
+
+Table tenants { id text [pk] name text tier text isolated_storage_key text [unique] status text created_at integer updated_at integer }
+Table users { id text [pk] tenant_id text [ref: > tenants.id] email text display_name text role text status text created_at integer updated_at integer Indexes { (tenant_id, email) [unique] } }
+Table roles { id text [pk] tenant_id text [ref: > tenants.id] name text permissions_json text created_at integer Indexes { (tenant_id, name) [unique] } }
+Table permissions { id text [pk] code text [unique] description text }
+Table tenant_memberships { id text [pk] tenant_id text [ref: > tenants.id] user_id text [ref: > users.id] role_id text [ref: > roles.id] status text created_at integer Indexes { (tenant_id, user_id) [unique] } }
+Table problems { id text [pk] tenant_id text [ref: > tenants.id] raw_problem text normalized_title text domain text detected_constraints_json text invariants_json text status text version text created_at integer updated_at integer }
+Table paradoxes { id text [pk] code text [unique] name text domain text category text classification text scope text formal_invariant text z3_smt_assertion text verification_status text created_at integer }
+Table invariants { id text [pk] problem_id text [ref: > problems.id] paradox_id text [ref: > paradoxes.id] statement text status text created_at integer }
+Table proof_bundles { id text [pk] subject_id text claim text claim_hash text implementation_hash text environment_hash text dependency_hash text verifier_identity text verification_status text evidence_json text formal_proofs_json text independent_oracles_json text replay_results_json text source_references_json text limitations_json text reproducibility_instructions text created_at integer }
+Table proof_evidence { id text [pk] proof_bundle_id text [ref: > proof_bundles.id] evidence_type text content_json text receipt_hash text created_at integer }
+Table tests { id text [pk] proof_bundle_id text [ref: > proof_bundles.id] name text description text passed boolean duration_ms decimal receipt_hash text created_at integer }
+Table verification_runs { id text [pk] tenant_id text [ref: > tenants.id] scope text environment text commit_sha text status text gates_passed integer gates_total integer root_hash text started_at integer completed_at integer }
+Table solutions { id text [pk] tenant_id text [ref: > tenants.id] problem_id text [ref: > problems.id] paradox_id text [ref: > paradoxes.id] code text [unique] title text domain text implementation_source text implementation_hash text verification_status text proof_bundle_id text [ref: > proof_bundles.id] performance_boost_percent decimal reversibility_guaranteed boolean status text created_at integer }
+Table offers { id text [pk] tenant_id text [ref: > tenants.id] solution_id text [ref: > solutions.id] proof_bundle_id text [ref: > proof_bundles.id] title text description text cost_basis_cents integer verification_complexity_factor decimal risk_class text price_cents integer sla_tier text published boolean verification_status text publication_blocked_reason text created_at integer }
+Table orders { id text [pk] tenant_id text [ref: > tenants.id] offer_id text [ref: > offers.id] solution_id text [ref: > solutions.id] proof_bundle_id text [ref: > proof_bundles.id] price_cents integer status text payment_id text [ref: > payments.id] deployment_id text [ref: > deployments.id] created_at integer updated_at integer }
+Table payments { id text [pk] tenant_id text [ref: > tenants.id] order_id text provider text provider_environment text provider_order_id text provider_capture_id text amount_cents integer currency text status text idempotency_key text [unique] receipt_hash text raw_response_json text created_at integer }
+Table deployments { id text [pk] tenant_id text [ref: > tenants.id] order_id text [ref: > orders.id] solution_id text [ref: > solutions.id] environment text status text implementation_hash text deployed_at integer created_at integer }
+Table checkpoints { id text [pk] tenant_id text [ref: > tenants.id] checkpoint_id text target_mutation text classification text snapshot_state_json text created_at integer }
+Table rollback_records { id text [pk] tenant_id text [ref: > tenants.id] checkpoint_id text [ref: > checkpoints.id] reason text status text restored_hash text created_at integer }
+Table telemetry { id text [pk] tenant_id text [ref: > tenants.id] node_id text metric text value decimal unit text recorded_at integer }
+Table audit_records { id text [pk] tenant_id text [ref: > tenants.id] index_num integer actor text action text target_entity text target_id text payload_json text payload_hash text previous_hash text record_hash text [unique] created_at integer Indexes { (tenant_id, index_num) [unique] } }
+Table chain_records { id text [pk] tenant_id text [ref: > tenants.id] audit_record_id text [ref: > audit_records.id] chain_height integer merkle_root text created_at integer }
+Table licenses { id text [pk] tenant_id text [ref: > tenants.id] solution_id text [ref: > solutions.id] order_id text [ref: > orders.id] license_key_hash text [unique] status text issued_at integer expires_at integer }
+Table adapter_status { id text [pk] tenant_id text [ref: > tenants.id] adapter_name text provider text environment text status text last_error text checked_at integer }
+Table node_registry { id text [pk] node_code text [unique] node_name text subsystem text status text capabilities_json text created_at integer }
+Table execution_runs { id text [pk] tenant_id text [ref: > tenants.id] run_type text target_id text status text input_hash text output_hash text evidence_hash text started_at integer completed_at integer }
+Table failures { id text [pk] tenant_id text [ref: > tenants.id] execution_run_id text [ref: > execution_runs.id] failure_type text severity text message text quarantined boolean resolved_at integer created_at integer }
