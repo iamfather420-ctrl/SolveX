@@ -23,6 +23,7 @@ import { ProofBundlesView } from './components/ProofBundlesView';
 import { DaisyBrainView } from './components/DaisyBrainView';
 import { AuditLedgerView } from './components/AuditLedgerView';
 import { EnterpriseAuditRunner } from './components/EnterpriseAuditRunner';
+import { DaisyKnowledgeBloom } from './components/DaisyKnowledgeBloom';
 import { AuthService, SovereignRole, UserContext } from './auth/AuthService';
 import { DurableStore } from './database/DurableStore';
 import { PayPalAdapter } from './payments/PayPalAdapter';
@@ -81,7 +82,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans relative isolate">
+      <DaisyKnowledgeBloom />
+      <div className="relative z-10 flex min-h-screen flex-col">
       {/* Sovereign Header */}
       <Header
         currentUser={currentUser}
@@ -370,6 +373,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

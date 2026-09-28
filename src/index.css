@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: #02060c;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.daisy-knowledge-bloom {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .daisy-knowledge-bloom {
+    opacity: 0.62;
+  }
+}
