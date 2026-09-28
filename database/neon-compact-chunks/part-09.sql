@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS failures ( id TEXT PRIMARY KEY, tenant_id TEXT REFERENCES tenants(id), execution_run_id TEXT REFERENCES execution_runs(id), failure_type TEXT NOT NULL, severity TEXT NOT NULL, message TEXT NOT NULL, quarantined BOOLEAN NOT NULL DEFAULT TRUE, resolved_at BIGINT, created_at BIGINT NOT NULL );
+ALTER TABLE orders ADD CONSTRAINT orders_payment_id_fkey FOREIGN KEY (payment_id) REFERENCES payments(id);
+ALTER TABLE orders ADD CONSTRAINT orders_deployment_id_fkey FOREIGN KEY (deployment_id) REFERENCES deployments(id);
+CREATE INDEX IF NOT EXISTS idx_users_tenant ON users(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_problems_tenant ON problems(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_solutions_tenant ON solutions(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_offers_tenant ON offers(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_orders_tenant ON orders(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_audit_tenant_height ON audit_records(tenant_id, index_num);
+CREATE INDEX IF NOT EXISTS idx_execution_runs_tenant ON execution_runs(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_telemetry_node_time ON telemetry(node_id, recorded_at);
