@@ -1,0 +1,63 @@
+{
+  "manifest_version": "1.0.0-PROD",
+  "execution_id": "exec_pipeline_1790573131011",
+  "commit_sha": "1cc9026a8043cca580ea24279e59f7ffc5c702d1",
+  "timestamp": "2026-09-28T05:25:33.847Z",
+  "environment": "local",
+  "claim_scope": "LOCAL_VERIFIED / MODEL_VERIFIED",
+  "daisy_nodes": {
+    "total": 54,
+    "registered": 54,
+    "instantiated": 54,
+    "reachable": 54,
+    "executed": 54,
+    "output_asserted": 54,
+    "evidence_generated": 54
+  },
+  "dfrl_operators": {
+    "total": 88,
+    "unsat_proved": 88,
+    "authored": 20,
+    "generated": 68,
+    "cleanroom_replays": 88,
+    "root_hash": "c797dea619befeb7718fb902f530033660bff9dea853e02b814641269b0dc541"
+  },
+  "dh_bootstrap_registry": {
+    "total": 32,
+    "executed": 32,
+    "deterministic_replays": 32,
+    "status_breakdown": {
+      "VERIFIED": 20,
+      "FAMILY_VARIANT": 5,
+      "CLAIM_ONLY": 4,
+      "PARTIAL": 3
+    },
+    "duplicate_links_invalid": 0,
+    "root_hash": "c15ca689681e6c2c70078bed041a723b662f919684a5e7cde05227489ed0b642",
+    "claim_scope": "REGISTRY_VERIFIED"
+  },
+  "verification_accounting": {
+    "total_records": 120,
+    "dfrl_records": 88,
+    "dh_bootstrap_records": 32,
+    "dfrl_executed": 88,
+    "dh_bootstrap_executed": 32,
+    "total_executed": 120,
+    "total_deterministic_replays": 120
+  },
+  "enterprise_invariants": {
+    "total": 30,
+    "passed": 30
+  },
+  "persistence": {
+    "sqlite_tables": 27,
+    "tenant_isolation": true,
+    "rollback": true,
+    "merkle_audit_chain": true
+  },
+  "gateways": {
+    "neon": "EXTERNAL_PROVIDER_REQUIRED",
+    "paypal": "CONFIGURATION_REQUIRED",
+    "stripe": "PROHIBITED_BLOCKED"
+  }
+}

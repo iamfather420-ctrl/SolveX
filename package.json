@@ -1,37 +1,51 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
+  "name": "react-example",
   "private": true,
-  "main": "server.ts",
+  "version": "0.0.0",
   "type": "module",
-  "workspaces": [
-    "artifacts/*",
-    "lib/*",
-    "scripts"
-  ],
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build --config artifacts/solvex/vite.config.ts && esbuild server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server.js",
-    "start": "node dist/server.js",
-    "lint": "npm run -w @workspace/solvex typecheck",
-    "test": "npm run -w @workspace/api-server test",
-    "test:all": "npm run -w @workspace/api-server test:all",
-    "test:middleware": "npm run -w @workspace/api-server test:middleware",
-    "test:pillars": "npm run -w @workspace/api-server test:pillars",
-    "test:crawlers": "npm run -w @workspace/api-server test:crawlers"
-  },
-  "devDependencies": {
-    "esbuild": "^0.25.0",
-    "prettier": "^3.8.4",
-    "tsx": "^4.21.0",
-    "typescript": "~5.9.3",
-    "vite": "^7.3.2",
-    "vitest": "^4.1.10"
+    "build": "vite build",
+    "start": "tsx server.ts",
+    "preview": "vite preview",
+    "clean": "rm -rf dist server.js",
+    "lint": "tsc --noEmit",
+    "preflight": "tsx scripts/preflight.ts",
+    "verify:enterprise": "tsx scripts/verify_enterprise.ts",
+    "verify:dfrl": "tsx scripts/verify_dfrl.ts",
+    "verify:proofs": "tsx scripts/verify_dfrl.ts",
+    "verify:nodes": "tsx scripts/verify_nodes.ts",
+    "verify:paypal": "tsx scripts/verify_paypal_dual_env.ts",
+    "verify:authoritative": "tsx scripts/verify_authoritative.ts",
+    "verify:sandbox": "tsx scripts/verify_sandbox.ts",
+    "verify:all": "tsx scripts/verify_authoritative.ts"
   },
   "dependencies": {
-    "@google/genai": "^2.12.0",
-    "groq-sdk": "^1.3.0",
-    "stripe": "^22.3.0",
-    "stripe-replit-sync": "^1.0.0"
+    "@google/genai": "^2.4.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^8.3.0",
+    "z3-solver": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.28.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2",
+    "@types/express": "^4.17.21"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
