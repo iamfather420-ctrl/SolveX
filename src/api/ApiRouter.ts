@@ -15,7 +15,6 @@ import { ReversibilityEngine } from '../database/ReversibilityEngine';
 import { DaisyBrain } from '../brain/DaisyBrain';
 import { computeSha256 } from '../database/DatabaseSchema';
 import { Z3FormalProofEngine } from '../proofs/Z3FormalProofEngine';
-import { B2BReferenceCaseService } from '../b2b/B2BReferenceCaseService';
 
 export interface ApiResponse<T = any> {
   status: number;
@@ -51,6 +50,11 @@ export class SovereignApiRouter {
     const token = authHeader.replace(/^Bearer\s+/i, '').trim();
     const verified = this.authService.verifyToken(token);
     return verified.valid && verified.user ? verified.user : null;
+  }
+
+  private async getB2BReferenceCaseService() {
+    const { B2BReferenceCaseService } = await import('../b2b/B2BReferenceCaseService');
+    return B2BReferenceCaseService.getInstance();
   }
 
   public async handleRequest(
@@ -147,13 +151,13 @@ export class SovereignApiRouter {
       }
       if (path.startsWith('/api/b2b/readiness/') && method === 'GET') {
         const candidateId = decodeURIComponent(path.slice('/api/b2b/readiness/'.length));
-        return { status: 200, data: B2BReferenceCaseService.getInstance().getReadiness(candidateId), timestamp };
+        return { status: 200, data: (await this.getB2BReferenceCaseService()).getReadiness(candidateId), timestamp };
       }
       if (path === '/api/b2b/reference-cases' && method === 'POST') {
         if (!user) return { status: 401, error: 'Authentication required to create a B2B reference case', timestamp };
         const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
         if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
-        const reference = B2BReferenceCaseService.getInstance().createReferenceCase(payload, user);
+        const reference = (await this.getB2BReferenceCaseService()).createReferenceCase(payload, user);
         return { status: 201, data: reference, timestamp };
       }
       if (path.startsWith('/api/b2b/reference-cases/') && path.endsWith('/evaluate') && method === 'POST') {
@@ -161,7 +165,7 @@ export class SovereignApiRouter {
         const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
         if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
         const referenceId = decodeURIComponent(path.slice('/api/b2b/reference-cases/'.length, -'/evaluate'.length));
-        const evidence = B2BReferenceCaseService.getInstance().executeAuthorizedEvaluation(referenceId, payload?.inputs, payload?.expected_outputs, user);
+        const evidence = (await this.getB2BReferenceCaseService()).executeAuthorizedEvaluation(referenceId, payload?.inputs, payload?.expected_outputs, user);
         return { status: 201, data: evidence, timestamp };
       }
       if (path.startsWith('/api/b2b/evaluations/') && path.endsWith('/accept') && method === 'POST') {
@@ -169,7 +173,7 @@ export class SovereignApiRouter {
         const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
         if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
         const evaluationId = decodeURIComponent(path.slice('/api/b2b/evaluations/'.length, -'/accept'.length));
-        const evidence = B2BReferenceCaseService.getInstance().commitAcceptance(evaluationId, user);
+        const evidence = (await this.getB2BReferenceCaseService()).commitAcceptance(evaluationId, user);
         return { status: 200, data: evidence, timestamp };
       }
       if (path === '/api/solutions/pipeline' && method === 'POST') {
