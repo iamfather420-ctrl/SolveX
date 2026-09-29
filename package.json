@@ -18,7 +18,22 @@
     "verify:paypal": "tsx scripts/verify_paypal_dual_env.ts",
     "verify:authoritative": "tsx scripts/verify_authoritative.ts",
     "verify:sandbox": "tsx scripts/verify_sandbox.ts",
-    "verify:all": "tsx scripts/verify_authoritative.ts"
+    "verify:all": "tsx scripts/verify_authoritative.ts",
+    "verify:api": "tsx scripts/verify_api_security.ts",
+    "run:daisy": "tsx scripts/run_daisy_candidate.ts",
+    "verify:candidate": "tsx scripts/verify_candidate.ts",
+    "verify:b2b": "tsx scripts/verify_b2b_reference.ts",
+    "verify:github": "tsx scripts/verify_github_integration.ts",
+    "verify:secrets": "tsx scripts/verify_secrets.ts",
+    "verify:production": "tsx scripts/verify_readiness.ts production",
+    "verify:commercial": "tsx scripts/verify_readiness.ts commercial",
+    "verify:payment": "tsx scripts/verify_readiness.ts payment",
+    "verify:webhooks": "tsx scripts/verify_readiness.ts webhooks",
+    "verify:security": "tsx scripts/verify_readiness.ts security",
+    "verify:marketplace": "tsx scripts/verify_readiness.ts marketplace",
+    "verify:recovery": "tsx scripts/verify_readiness.ts recovery",
+    "verify:truth": "tsx scripts/build_truth_report.ts",
+    "verify:hardened": "npm run lint && npm run verify:secrets && npm run verify:api && npm run verify:github && npm run verify:candidate && npm run verify:b2b && npm run verify:truth"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

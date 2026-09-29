@@ -15,6 +15,7 @@ import { ReversibilityEngine } from '../database/ReversibilityEngine';
 import { DaisyBrain } from '../brain/DaisyBrain';
 import { computeSha256 } from '../database/DatabaseSchema';
 import { Z3FormalProofEngine } from '../proofs/Z3FormalProofEngine';
+import { B2BReferenceCaseService } from '../b2b/B2BReferenceCaseService';
 
 export interface ApiResponse<T = any> {
   status: number;
@@ -65,6 +66,7 @@ export class SovereignApiRouter {
       // 1. /api/auth
       if (path === '/api/auth/login' && method === 'POST') {
         const { email, role = 'CUSTOMER', tenant_id = 'TENANT_ENTERPRISE_DEMO' } = payload || {};
+        if (!email && payload && ('role' in payload || 'tenant_id' in payload)) return { status: 410, error: 'Role-selecting public login is retired; an authenticated identity provider is required.', timestamp };
         if (!email) return { status: 400, error: 'Email is required for authentication', timestamp };
         const token = this.authService.createSignedToken(`usr_${Date.now()}`, tenant_id, email, role as SovereignRole);
         return {
@@ -143,15 +145,41 @@ export class SovereignApiRouter {
         const solutions = Object.values(this.durableStore.getState().solutions);
         return { status: 200, data: solutions, timestamp };
       }
+      if (path.startsWith('/api/b2b/readiness/') && method === 'GET') {
+        const candidateId = decodeURIComponent(path.slice('/api/b2b/readiness/'.length));
+        return { status: 200, data: B2BReferenceCaseService.getInstance().getReadiness(candidateId), timestamp };
+      }
+      if (path === '/api/b2b/reference-cases' && method === 'POST') {
+        if (!user) return { status: 401, error: 'Authentication required to create a B2B reference case', timestamp };
+        const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
+        if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
+        const reference = B2BReferenceCaseService.getInstance().createReferenceCase(payload, user);
+        return { status: 201, data: reference, timestamp };
+      }
+      if (path.startsWith('/api/b2b/reference-cases/') && path.endsWith('/evaluate') && method === 'POST') {
+        if (!user) return { status: 401, error: 'Authentication required to evaluate a B2B reference case', timestamp };
+        const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
+        if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
+        const referenceId = decodeURIComponent(path.slice('/api/b2b/reference-cases/'.length, -'/evaluate'.length));
+        const evidence = B2BReferenceCaseService.getInstance().executeAuthorizedEvaluation(referenceId, payload?.inputs, payload?.expected_outputs, user);
+        return { status: 201, data: evidence, timestamp };
+      }
+      if (path.startsWith('/api/b2b/evaluations/') && path.endsWith('/accept') && method === 'POST') {
+        if (!user) return { status: 401, error: 'Authentication required to accept B2B evidence', timestamp };
+        const auth = this.authService.authorize(user, 'VIEW_EVIDENCE');
+        if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
+        const evaluationId = decodeURIComponent(path.slice('/api/b2b/evaluations/'.length, -'/accept'.length));
+        const evidence = B2BReferenceCaseService.getInstance().commitAcceptance(evaluationId, user);
+        return { status: 200, data: evidence, timestamp };
+      }
       if (path === '/api/solutions/pipeline' && method === 'POST') {
-        if (user) {
-          const auth = this.authService.authorize(user, 'RUN_PIPELINE');
-          if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
-        }
+        if (!user) return { status: 401, error: 'Authentication required to run solution pipeline', timestamp };
+        const auth = this.authService.authorize(user, 'RUN_PIPELINE');
+        if (!auth.authorized) return { status: 403, error: auth.reason, timestamp };
         const { paradox_code = 'DH-P-001', code_solution } = payload || {};
         const pipeline = SolutionPipeline.getInstance();
         const res = pipeline.runPipeline(paradox_code, code_solution || 'export function defaultSolve() { return true; }');
-        return { status: 200, data: res, timestamp };
+        return { status: res.overall_success ? 202 : 400, data: res, timestamp };
       }
 
       // 7. /api/verification
@@ -210,7 +238,8 @@ export class SovereignApiRouter {
 
       // 10. /api/orders
       if (path === '/api/orders' && method === 'GET') {
-        const targetTenant = user ? user.tenant_id : 'TENANT_ENTERPRISE_DEMO';
+        if (!user) return { status: 401, error: 'Authentication required to read orders', timestamp };
+        const targetTenant = user.tenant_id;
         const orders = this.sqlite.findTenantRecords('orders', targetTenant);
         return { status: 200, data: orders, timestamp };
       }
@@ -238,7 +267,7 @@ export class SovereignApiRouter {
         const { order_id, amount_cents, idempotency_key } = payload || {};
         if (!order_id || !amount_cents) return { status: 400, error: 'order_id and amount_cents required', timestamp };
         const paypal = PayPalAdapter.getInstance();
-        const res = paypal.captureOrderPayment(order_id, amount_cents, idempotency_key || `idemp_${Date.now()}`);
+        const res = await paypal.captureOrderPayment(order_id, amount_cents, idempotency_key || `idemp_${Date.now()}`);
         return { status: 200, data: res, timestamp };
       }
       if (path === '/api/payments/paypal/status' && method === 'GET') {
