@@ -54,6 +54,14 @@ export interface PayPalVerificationTestResult {
   timestamp: number;
 }
 
+export interface PayPalWebhookVerificationResult {
+  verified: boolean;
+  status_code: number;
+  event_id?: string;
+  event_type?: string;
+  error?: string;
+}
+
 export class PayPalAdapter {
   private static instance: PayPalAdapter | null = null;
   private sessionCredentials: PayPalCredentials | null = null;
@@ -267,6 +275,51 @@ export class PayPalAdapter {
       message: `PayPal authentication failed: ${oauth.error}`,
       timestamp: Date.now()
     };
+  }
+
+  public async verifyWebhookSignature(
+    event: unknown,
+    headers: Record<string, string | undefined>
+  ): Promise<PayPalWebhookVerificationResult> {
+    const creds = this.getEffectiveCredentials();
+    const webhookId = typeof process !== 'undefined' ? process.env.PAYPAL_WEBHOOK_ID : undefined;
+    const transmissionId = headers['paypal-transmission-id'];
+    const transmissionTime = headers['paypal-transmission-time'];
+    const certUrl = headers['paypal-cert-url'];
+    const authAlgo = headers['paypal-auth-algo'];
+    const transmissionSig = headers['paypal-transmission-sig'];
+    const eventRecord = event as { id?: string; event_type?: string } | undefined;
+
+    if (!creds || !webhookId || !transmissionId || !transmissionTime || !certUrl || !authAlgo || !transmissionSig) {
+      return { verified: false, status_code: 401, event_id: eventRecord?.id, event_type: eventRecord?.event_type, error: 'PayPal webhook verification prerequisites are missing; fail-closed.' };
+    }
+
+    const oauth = await this.acquireOAuthToken(creds);
+    if (!oauth.access_token) {
+      return { verified: false, status_code: 401, event_id: eventRecord?.id, event_type: eventRecord?.event_type, error: 'PayPal webhook verification authentication failed; fail-closed.' };
+    }
+
+    const host = creds.environment === 'live' ? 'https://api-m.paypal.com' : 'https://api-m.sandbox.paypal.com';
+    try {
+      const response = await fetch(`${host}/v1/notifications/verify-webhook-signature`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${oauth.access_token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          auth_algo: authAlgo,
+          cert_url: certUrl,
+          transmission_id: transmissionId,
+          transmission_sig: transmissionSig,
+          transmission_time: transmissionTime,
+          webhook_id: webhookId,
+          webhook_event: event
+        })
+      });
+      const body = await response.json() as { verification_status?: string };
+      const verified = response.ok && body.verification_status === 'SUCCESS';
+      return { verified, status_code: response.status, event_id: eventRecord?.id, event_type: eventRecord?.event_type, ...(verified ? {} : { error: 'PayPal rejected webhook signature; fail-closed.' }) };
+    } catch {
+      return { verified: false, status_code: 0, event_id: eventRecord?.id, event_type: eventRecord?.event_type, error: 'PayPal webhook verification network failure; fail-closed.' };
+    }
   }
 
   /**

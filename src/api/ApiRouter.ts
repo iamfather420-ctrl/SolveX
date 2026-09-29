@@ -267,6 +267,19 @@ export class SovereignApiRouter {
       }
 
       // 11. /api/payments
+      if (path === '/api/payments/paypal/webhook' && method === 'POST') {
+        const paypal = PayPalAdapter.getInstance();
+        const webhookHeaders = {
+          'paypal-transmission-id': typeof headers['paypal-transmission-id'] === 'string' ? headers['paypal-transmission-id'] : undefined,
+          'paypal-transmission-time': typeof headers['paypal-transmission-time'] === 'string' ? headers['paypal-transmission-time'] : undefined,
+          'paypal-cert-url': typeof headers['paypal-cert-url'] === 'string' ? headers['paypal-cert-url'] : undefined,
+          'paypal-auth-algo': typeof headers['paypal-auth-algo'] === 'string' ? headers['paypal-auth-algo'] : undefined,
+          'paypal-transmission-sig': typeof headers['paypal-transmission-sig'] === 'string' ? headers['paypal-transmission-sig'] : undefined
+        };
+        const verification = await paypal.verifyWebhookSignature(payload, webhookHeaders);
+        if (!verification.verified) return { status: 401, error: verification.error || 'PayPal webhook signature rejected', data: verification, timestamp };
+        return { status: 202, data: { accepted: true, event_id: verification.event_id, event_type: verification.event_type }, timestamp };
+      }
       if (path === '/api/payments/capture' && method === 'POST') {
         const { order_id, amount_cents, idempotency_key } = payload || {};
         if (!order_id || !amount_cents) return { status: 400, error: 'order_id and amount_cents required', timestamp };

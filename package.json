@@ -33,6 +33,7 @@
     "verify:marketplace": "tsx scripts/verify_readiness.ts marketplace",
     "verify:recovery": "tsx scripts/verify_readiness.ts recovery",
     "verify:21-gates": "tsx scripts/verify_21_gates.ts",
+    "verify:all-gates": "tsx scripts/verify_all_gates.ts",
     "verify:truth": "tsx scripts/build_truth_report.ts",
     "verify:hardened": "npm run lint && npm run verify:secrets && npm run verify:api && npm run verify:github && npm run verify:candidate && npm run verify:b2b && npm run verify:truth"
   },
