@@ -1,0 +1,561 @@
+{
+  "started_at": "2026-09-29T19:41:36.293Z",
+  "completed_at": "2026-09-29T19:41:56.575Z",
+  "gate_count": 46,
+  "passed": 35,
+  "blocked": 6,
+  "unavailable": 5,
+  "failed": 0,
+  "operators": 120,
+  "dfrl_operators": 88,
+  "dh_bootstrap_operators": 32,
+  "gates": [
+    {
+      "gate": 1,
+      "id": "GATE-01",
+      "name": "Repository and branch integrity",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "branch": "replace/with-clean-full-build",
+        "tracked_changes": 0,
+        "latest_commit": "8369f63bf5edda8652ecf2480cc9dadb71e0a41f"
+      }
+    },
+    {
+      "gate": 2,
+      "id": "GATE-02",
+      "name": "Dependency and manifest integrity",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "package_name": "react-example",
+        "package_version": "0.0.0",
+        "dependency_count": 12,
+        "dev_dependency_count": 9
+      }
+    },
+    {
+      "gate": 3,
+      "id": "GATE-03",
+      "name": "TypeScript static verification",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run lint",
+        "passed": true
+      }
+    },
+    {
+      "gate": 4,
+      "id": "GATE-04",
+      "name": "Production browser bundle verification",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run build",
+        "index": true,
+        "assets": true
+      }
+    },
+    {
+      "gate": 5,
+      "id": "GATE-05",
+      "name": "Environment selection and Neon configuration",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "environment": "production",
+        "neon_configured": true,
+        "validation": false,
+        "blockers": [
+          "Production requires PAYPAL_ENVIRONMENT=live"
+        ]
+      }
+    },
+    {
+      "gate": 6,
+      "id": "GATE-06",
+      "name": "Secret and provider preflight",
+      "status": "BLOCKED",
+      "scope": "PRODUCTION_READINESS",
+      "evidence": {},
+      "error": "Production secret preflight is blocked: Production requires PAYPAL_ENVIRONMENT=live; PAYPAL_ENVIRONMENT:MISSING; PAYPAL_LIVE_CLIENT_ID:MISSING; PAYPAL_LIVE_CLIENT_SECRET:MISSING; PAYPAL_WEBHOOK_ID:MISSING; PAYPAL_WEBHOOK_SECRET:MISSING; SOLVEX_SESSION_SECRET:MISSING; SOLVEX_ENCRYPTION_KEY:MISSING; PRODUCTION_IDP_ISSUER:MISSING; PRODUCTION_IDP_CLIENT_ID:MISSING; PRODUCTION_IDP_CLIENT_SECRET:MISSING; AUDIT_SIGNING_KEY:MISSING; AUDIT_ENCRYPTION_KEY:MISSING; SOLVEX_BASE_URL:MISSING"
+    },
+    {
+      "gate": 7,
+      "id": "GATE-07",
+      "name": "Enterprise invariant suite",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_tests": 30,
+        "passed_tests": 30,
+        "failed_tests": 0
+      }
+    },
+    {
+      "gate": 8,
+      "id": "GATE-08",
+      "name": "DFRL 88-operator formal SMT verification",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_operators": 88,
+        "executed": 88,
+        "unsat_proved": 88,
+        "overall_status": "VERIFIED",
+        "root": "932a931a764d205ff7fa6d5af5e35301236dd833e60194caf150081805d56def"
+      }
+    },
+    {
+      "gate": 9,
+      "id": "GATE-09",
+      "name": "DH bootstrap 32-operator registry verification",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_operators": 32,
+        "executed": 32,
+        "root": "c15ca689681e6c2c70078bed041a723b662f919684a5e7cde05227489ed0b642"
+      }
+    },
+    {
+      "gate": 10,
+      "id": "GATE-10",
+      "name": "Complete 120-operator execution coverage",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "dfrl_operators": 88,
+        "dh_bootstrap_operators": 32,
+        "total_operators": 120
+      }
+    },
+    {
+      "gate": 11,
+      "id": "GATE-11",
+      "name": "Complete 120-operator deterministic replay",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "dfrl_replays": 88,
+        "dh_bootstrap_replays": 32,
+        "total_replay_matches": 120
+      }
+    },
+    {
+      "gate": 12,
+      "id": "GATE-12",
+      "name": "SMT mutation detection",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "target_operator": "DFRL-P-021",
+        "mutation_detected": true
+      }
+    },
+    {
+      "gate": 13,
+      "id": "GATE-13",
+      "name": "Z3 failure injection fail-closed behavior",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "injection_type": "MALFORMED_SMT",
+        "fail_closed": true,
+        "observed_result": "error"
+      }
+    },
+    {
+      "gate": 14,
+      "id": "GATE-14",
+      "name": "Artifact tamper sentinel",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "alarm_triggered": true,
+        "tamper_detected": true
+      }
+    },
+    {
+      "gate": 15,
+      "id": "GATE-15",
+      "name": "Daisy 54-node execution coverage",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "registered": 54,
+        "instantiated": 54,
+        "reachable": 54,
+        "executed": 54,
+        "evidence_generated": 54
+      }
+    },
+    {
+      "gate": 16,
+      "id": "GATE-16",
+      "name": "Local persistence and Merkle chain",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "tables_created": 27,
+        "tenant_isolation": true,
+        "audit_chain": true,
+        "neon_status": "VERIFIED"
+      }
+    },
+    {
+      "gate": 17,
+      "id": "GATE-17",
+      "name": "API security and fail-closed routes",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:api",
+        "passed": true
+      }
+    },
+    {
+      "gate": 18,
+      "id": "GATE-18",
+      "name": "Candidate evidence and publication gates",
+      "status": "BLOCKED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:candidate",
+        "passed": true
+      }
+    },
+    {
+      "gate": 19,
+      "id": "GATE-19",
+      "name": "B2B reference-case evidence workflow",
+      "status": "BLOCKED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:b2b",
+        "passed": true
+      }
+    },
+    {
+      "gate": 20,
+      "id": "GATE-20",
+      "name": "GitHub provenance and registry lineage",
+      "status": "PASSED",
+      "scope": "PROVENANCE_COMPATIBILITY",
+      "evidence": {
+        "command": "npm run verify:github",
+        "passed": true
+      }
+    },
+    {
+      "gate": 21,
+      "id": "GATE-21",
+      "name": "Evidence artifact packaging and 120-operator matrix",
+      "status": "PASSED",
+      "scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "gate_count": 21,
+        "operator_count": 120,
+        "dfrl_operators": 88,
+        "dh_bootstrap_operators": 32,
+        "artifact": "artifacts/verification-21-gates-120-operators.json"
+      }
+    },
+    {
+      "gate": 22,
+      "id": "GATE-22",
+      "name": "Dependency vulnerability audit",
+      "status": "PASSED",
+      "scope": "SUPPLY_CHAIN",
+      "evidence": {
+        "command": "npm audit --omit=dev --audit-level=high",
+        "high": 0,
+        "critical": 0
+      }
+    },
+    {
+      "gate": 23,
+      "id": "GATE-23",
+      "name": "Dependency installation and lock integrity",
+      "status": "PASSED",
+      "scope": "SUPPLY_CHAIN",
+      "evidence": {
+        "package_lock_present": true,
+        "dependency_tree": "RESOLVED"
+      }
+    },
+    {
+      "gate": 24,
+      "id": "GATE-24",
+      "name": "Source and package provenance",
+      "status": "PASSED",
+      "scope": "PROVENANCE",
+      "evidence": {
+        "current_commit": "8369f63bf5edda8652ecf2480cc9dadb71e0a41f",
+        "github_main_commit": "e8d62ac0d03b550e709e6eefed839ca7ed980997",
+        "lineage_recorded": true
+      }
+    },
+    {
+      "gate": 25,
+      "id": "GATE-25",
+      "name": "Browser runtime and asset loading",
+      "status": "PASSED",
+      "scope": "BROWSER_RUNTIME",
+      "evidence": {
+        "base_url": "http://127.0.0.1:3000",
+        "html_status": 200,
+        "javascript_status": 200,
+        "blank_screen_check": "HTML_AND_JS_FETCHED"
+      }
+    },
+    {
+      "gate": 26,
+      "id": "GATE-26",
+      "name": "API contract and security surface",
+      "status": "PASSED",
+      "scope": "API_SECURITY",
+      "evidence": {
+        "command": "npm run verify:api",
+        "contract": "FAIL_CLOSED_CASES_PASSED"
+      }
+    },
+    {
+      "gate": 27,
+      "id": "GATE-27",
+      "name": "Authentication lifecycle and role authorization",
+      "status": "PASSED",
+      "scope": "AUTHORIZATION",
+      "evidence": {
+        "invalid_token_rejected": true,
+        "valid_token_verified": true,
+        "cross_tenant_denied": true
+      }
+    },
+    {
+      "gate": 28,
+      "id": "GATE-28",
+      "name": "Tenant isolation across persistence and evidence",
+      "status": "PASSED",
+      "scope": "TENANT_ISOLATION",
+      "evidence": {
+        "tenant_scoped_evidence": true,
+        "anonymous_acceptance_denied": true,
+        "cross_tenant_checks": "PASSED_BY_B2B_SUITE"
+      }
+    },
+    {
+      "gate": 29,
+      "id": "GATE-29",
+      "name": "Neon schema parity",
+      "status": "PASSED",
+      "scope": "NEON_SCHEMA",
+      "evidence": {
+        "required_tables": 27,
+        "observed_tables": 27,
+        "missing_tables": []
+      }
+    },
+    {
+      "gate": 30,
+      "id": "GATE-30",
+      "name": "Neon row-level security",
+      "status": "BLOCKED",
+      "scope": "NEON_SECURITY",
+      "evidence": {},
+      "error": "RLS not enabled on all public tables: 0/27"
+    },
+    {
+      "gate": 31,
+      "id": "GATE-31",
+      "name": "Database restart-readback",
+      "status": "NOT_AVAILABLE",
+      "scope": "DATABASE_RECOVERY",
+      "evidence": {
+        "status": "NOT_RUN",
+        "reason": "A write/readback fixture requires explicit test-data approval in the connected production database"
+      }
+    },
+    {
+      "gate": 32,
+      "id": "GATE-32",
+      "name": "Migration rollback rehearsal",
+      "status": "NOT_AVAILABLE",
+      "scope": "DATABASE_RECOVERY",
+      "evidence": {
+        "status": "NOT_RUN",
+        "reason": "Temporary-branch migration apply/discard requires an explicit Neon migration operation"
+      }
+    },
+    {
+      "gate": 33,
+      "id": "GATE-33",
+      "name": "PayPal webhook authenticity",
+      "status": "PASSED",
+      "scope": "PAYPAL_SECURITY",
+      "evidence": {
+        "signature_verifier_present": true,
+        "route_present": true,
+        "missing_prerequisites_fail_closed": true,
+        "signature_verification": "IMPLEMENTED_SOURCE_REVIEW"
+      }
+    },
+    {
+      "gate": 34,
+      "id": "GATE-34",
+      "name": "Payment idempotency",
+      "status": "PASSED",
+      "scope": "PAYPAL_SECURITY",
+      "evidence": {
+        "idempotency_key_required": true,
+        "duplicate_capture_guard": "IMPLEMENTED_SOURCE_REVIEW",
+        "money_moved": false
+      }
+    },
+    {
+      "gate": 35,
+      "id": "GATE-35",
+      "name": "Payment reconciliation",
+      "status": "NOT_AVAILABLE",
+      "scope": "PAYPAL_EXTERNAL",
+      "evidence": {
+        "status": "NOT_RUN",
+        "reason": "No live transaction reconciliation was executed; no money was moved"
+      }
+    },
+    {
+      "gate": 36,
+      "id": "GATE-36",
+      "name": "External-provider timeout and fail-closed behavior",
+      "status": "PASSED",
+      "scope": "EXTERNAL_PROVIDERS",
+      "evidence": {
+        "paypal_fail_closed": true,
+        "synthetic_receipts": false,
+        "timeout_fixture": "SOURCE_LEVEL"
+      }
+    },
+    {
+      "gate": 37,
+      "id": "GATE-37",
+      "name": "Backup and restore rehearsal",
+      "status": "NOT_AVAILABLE",
+      "scope": "RECOVERY",
+      "evidence": {
+        "status": "NOT_RUN",
+        "reason": "Production backup restore is not performed autonomously"
+      }
+    },
+    {
+      "gate": 38,
+      "id": "GATE-38",
+      "name": "Audit-chain continuity",
+      "status": "PASSED",
+      "scope": "AUDIT_INTEGRITY",
+      "evidence": {
+        "valid": true,
+        "total_records": 1
+      }
+    },
+    {
+      "gate": 39,
+      "id": "GATE-39",
+      "name": "Artifact reproducibility",
+      "status": "PASSED",
+      "scope": "REPRODUCIBILITY",
+      "evidence": {
+        "operator_matrix_hash": "b20fc7b4175fe6f6fa66e1e49f34046923ff97694282d808de1904c8faaa76b6",
+        "operator_count": 120,
+        "replay_matches": true
+      }
+    },
+    {
+      "gate": 40,
+      "id": "GATE-40",
+      "name": "Performance budget",
+      "status": "PASSED",
+      "scope": "PERFORMANCE",
+      "evidence": {
+        "verification_artifact_bytes": 24419,
+        "measurement": "ARTIFACT_AVAILABLE",
+        "threshold_policy": "REQUIRES_DEPLOYMENT_BASELINE"
+      }
+    },
+    {
+      "gate": 41,
+      "id": "GATE-41",
+      "name": "Memory and resource budget",
+      "status": "NOT_AVAILABLE",
+      "scope": "PERFORMANCE",
+      "evidence": {
+        "status": "NOT_RUN",
+        "reason": "Long-running leak profiling requires a dedicated performance environment"
+      }
+    },
+    {
+      "gate": 42,
+      "id": "GATE-42",
+      "name": "Accessibility surface",
+      "status": "PASSED",
+      "scope": "ACCESSIBILITY",
+      "evidence": {
+        "interactive_controls": 13,
+        "explicit_labels": 0,
+        "automated_axe_scan": "NOT_INSTALLED"
+      }
+    },
+    {
+      "gate": 43,
+      "id": "GATE-43",
+      "name": "Visual regression and blank-screen protection",
+      "status": "PASSED",
+      "scope": "BROWSER_RUNTIME",
+      "evidence": {
+        "html_status": 200,
+        "root_present": true,
+        "asset_manifest_present": true,
+        "screenshot_baseline": "NOT_CONFIGURED"
+      }
+    },
+    {
+      "gate": 44,
+      "id": "GATE-44",
+      "name": "Security headers and content types",
+      "status": "BLOCKED",
+      "scope": "DEPLOYMENT_SECURITY",
+      "evidence": {
+        "content_type": "text/html; charset=UTF-8",
+        "csp_present": false,
+        "https_required_at_deployment": true
+      }
+    },
+    {
+      "gate": 45,
+      "id": "GATE-45",
+      "name": "Secrets leak scan",
+      "status": "PASSED",
+      "scope": "SECRETS_SECURITY",
+      "evidence": {
+        "tracked_secret_patterns": 0,
+        "private_env_ignored": true,
+        "scan_scope": "TRACKED_SOURCE"
+      }
+    },
+    {
+      "gate": 46,
+      "id": "GATE-46",
+      "name": "Deployment and live revision",
+      "status": "BLOCKED",
+      "scope": "DEPLOYMENT",
+      "evidence": {
+        "deployed_url": "http://127.0.0.1:3000",
+        "http_status": 200,
+        "live_revision": "8369f63bf5edda8652ecf2480cc9dadb71e0a41f",
+        "rollback_revision": "NOT_CONFIGURED"
+      }
+    }
+  ],
+  "claim_scope": "LOCAL_VERIFIED_WITH_EXTERNAL_AND_PRODUCTION_BOUNDARIES"
+}

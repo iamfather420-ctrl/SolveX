@@ -1,0 +1,1104 @@
+{
+  "started_at": "2026-09-29T19:41:36.763Z",
+  "completed_at": "2026-09-29T19:41:47.326Z",
+  "gate_count": 21,
+  "operator_count": 120,
+  "operator_matrix": [
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-001",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-002",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-003",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-004",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-005",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-006",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-007",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-008",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-009",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-010",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-011",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-012",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-013",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-014",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-015",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-016",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-017",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-018",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-019",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-020",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-021",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-022",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-023",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-024",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-025",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-026",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-027",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-028",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-029",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-030",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-031",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-032",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-033",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-034",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-035",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-036",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-037",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-038",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-039",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-040",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-041",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-042",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-043",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-044",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-045",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-046",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-047",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-048",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-049",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-050",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-051",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-052",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-053",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-054",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-055",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-056",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-057",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-058",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-059",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-060",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-061",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-062",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-063",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-064",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-065",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-066",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-067",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-068",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-069",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-070",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-071",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-072",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-073",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-074",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-075",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-076",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-077",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-078",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-079",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-080",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-081",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-082",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-083",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-084",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-085",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-086",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-087",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DFRL",
+      "code": "DFRL-P-088",
+      "executed": true,
+      "replay_match": true,
+      "result": "unsat"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-001",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-002",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-003",
+      "executed": true,
+      "replay_match": true,
+      "result": "FAMILY_VARIANT"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-004",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-005",
+      "executed": true,
+      "replay_match": true,
+      "result": "FAMILY_VARIANT"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-006",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-007",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-008",
+      "executed": true,
+      "replay_match": true,
+      "result": "FAMILY_VARIANT"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-009",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-010",
+      "executed": true,
+      "replay_match": true,
+      "result": "FAMILY_VARIANT"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-011",
+      "executed": true,
+      "replay_match": true,
+      "result": "CLAIM_ONLY"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-012",
+      "executed": true,
+      "replay_match": true,
+      "result": "CLAIM_ONLY"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-013",
+      "executed": true,
+      "replay_match": true,
+      "result": "PARTIAL"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-014",
+      "executed": true,
+      "replay_match": true,
+      "result": "PARTIAL"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-015",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-016",
+      "executed": true,
+      "replay_match": true,
+      "result": "CLAIM_ONLY"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-017",
+      "executed": true,
+      "replay_match": true,
+      "result": "PARTIAL"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-018",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-019",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-020",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-021",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-022",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-023",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-024",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-025",
+      "executed": true,
+      "replay_match": true,
+      "result": "CLAIM_ONLY"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-026",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-027",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-028",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-029",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-030",
+      "executed": true,
+      "replay_match": true,
+      "result": "FAMILY_VARIANT"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-031",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    },
+    {
+      "source": "DH_BOOTSTRAP",
+      "code": "DH-P-032",
+      "executed": true,
+      "replay_match": true,
+      "result": "VERIFIED"
+    }
+  ],
+  "gates": [
+    {
+      "gate": 1,
+      "id": "GATE-01",
+      "name": "Repository and branch integrity",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "branch": "replace/with-clean-full-build",
+        "tracked_changes": 0,
+        "latest_commit": "8369f63bf5edda8652ecf2480cc9dadb71e0a41f"
+      }
+    },
+    {
+      "gate": 2,
+      "id": "GATE-02",
+      "name": "Dependency and manifest integrity",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "package_name": "react-example",
+        "package_version": "0.0.0",
+        "dependency_count": 12,
+        "dev_dependency_count": 9
+      }
+    },
+    {
+      "gate": 3,
+      "id": "GATE-03",
+      "name": "TypeScript static verification",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run lint",
+        "passed": true
+      }
+    },
+    {
+      "gate": 4,
+      "id": "GATE-04",
+      "name": "Production browser bundle verification",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run build",
+        "index": true,
+        "assets": true
+      }
+    },
+    {
+      "gate": 5,
+      "id": "GATE-05",
+      "name": "Environment selection and Neon configuration",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "environment": "production",
+        "neon_configured": true,
+        "validation": false,
+        "blockers": [
+          "Production requires PAYPAL_ENVIRONMENT=live"
+        ]
+      }
+    },
+    {
+      "gate": 6,
+      "id": "GATE-06",
+      "name": "Secret and provider preflight",
+      "status": "BLOCKED",
+      "claim_scope": "PRODUCTION_READINESS",
+      "evidence": {},
+      "error": "Production secret preflight is blocked: Production requires PAYPAL_ENVIRONMENT=live; PAYPAL_ENVIRONMENT:MISSING; PAYPAL_LIVE_CLIENT_ID:MISSING; PAYPAL_LIVE_CLIENT_SECRET:MISSING; PAYPAL_WEBHOOK_ID:MISSING; PAYPAL_WEBHOOK_SECRET:MISSING; SOLVEX_SESSION_SECRET:MISSING; SOLVEX_ENCRYPTION_KEY:MISSING; PRODUCTION_IDP_ISSUER:MISSING; PRODUCTION_IDP_CLIENT_ID:MISSING; PRODUCTION_IDP_CLIENT_SECRET:MISSING; AUDIT_SIGNING_KEY:MISSING; AUDIT_ENCRYPTION_KEY:MISSING; SOLVEX_BASE_URL:MISSING"
+    },
+    {
+      "gate": 7,
+      "id": "GATE-07",
+      "name": "Enterprise invariant suite",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_tests": 30,
+        "passed_tests": 30,
+        "failed_tests": 0
+      }
+    },
+    {
+      "gate": 8,
+      "id": "GATE-08",
+      "name": "DFRL 88-operator formal SMT verification",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_operators": 88,
+        "executed": 88,
+        "unsat_proved": 88,
+        "overall_status": "VERIFIED",
+        "root": "932a931a764d205ff7fa6d5af5e35301236dd833e60194caf150081805d56def"
+      }
+    },
+    {
+      "gate": 9,
+      "id": "GATE-09",
+      "name": "DH bootstrap 32-operator registry verification",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "total_operators": 32,
+        "executed": 32,
+        "root": "c15ca689681e6c2c70078bed041a723b662f919684a5e7cde05227489ed0b642"
+      }
+    },
+    {
+      "gate": 10,
+      "id": "GATE-10",
+      "name": "Complete 120-operator execution coverage",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "dfrl_operators": 88,
+        "dh_bootstrap_operators": 32,
+        "total_operators": 120
+      }
+    },
+    {
+      "gate": 11,
+      "id": "GATE-11",
+      "name": "Complete 120-operator deterministic replay",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "dfrl_replays": 88,
+        "dh_bootstrap_replays": 32,
+        "total_replay_matches": 120
+      }
+    },
+    {
+      "gate": 12,
+      "id": "GATE-12",
+      "name": "SMT mutation detection",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "target_operator": "DFRL-P-021",
+        "mutation_detected": true
+      }
+    },
+    {
+      "gate": 13,
+      "id": "GATE-13",
+      "name": "Z3 failure injection fail-closed behavior",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "injection_type": "MALFORMED_SMT",
+        "fail_closed": true,
+        "observed_result": "error"
+      }
+    },
+    {
+      "gate": 14,
+      "id": "GATE-14",
+      "name": "Artifact tamper sentinel",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "alarm_triggered": true,
+        "tamper_detected": true
+      }
+    },
+    {
+      "gate": 15,
+      "id": "GATE-15",
+      "name": "Daisy 54-node execution coverage",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "registered": 54,
+        "instantiated": 54,
+        "reachable": 54,
+        "executed": 54,
+        "evidence_generated": 54
+      }
+    },
+    {
+      "gate": 16,
+      "id": "GATE-16",
+      "name": "Local persistence and Merkle chain",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "tables_created": 27,
+        "tenant_isolation": true,
+        "audit_chain": true,
+        "neon_status": "VERIFIED"
+      }
+    },
+    {
+      "gate": 17,
+      "id": "GATE-17",
+      "name": "API security and fail-closed routes",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:api",
+        "passed": true
+      }
+    },
+    {
+      "gate": 18,
+      "id": "GATE-18",
+      "name": "Candidate evidence and publication gates",
+      "status": "BLOCKED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:candidate",
+        "passed": true
+      }
+    },
+    {
+      "gate": 19,
+      "id": "GATE-19",
+      "name": "B2B reference-case evidence workflow",
+      "status": "BLOCKED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "command": "npm run verify:b2b",
+        "passed": true
+      }
+    },
+    {
+      "gate": 20,
+      "id": "GATE-20",
+      "name": "GitHub provenance and registry lineage",
+      "status": "PASSED",
+      "claim_scope": "PROVENANCE_COMPATIBILITY",
+      "evidence": {
+        "command": "npm run verify:github",
+        "passed": true
+      }
+    },
+    {
+      "gate": 21,
+      "id": "GATE-21",
+      "name": "Evidence artifact packaging and 120-operator matrix",
+      "status": "PASSED",
+      "claim_scope": "LOCAL_VERIFIED",
+      "evidence": {
+        "gate_count": 21,
+        "operator_count": 120,
+        "dfrl_operators": 88,
+        "dh_bootstrap_operators": 32,
+        "artifact": "artifacts/verification-21-gates-120-operators.json"
+      }
+    }
+  ],
+  "claim_scope": "LOCAL_VERIFIED_WITH_PRODUCTION_BLOCKERS"
+}
